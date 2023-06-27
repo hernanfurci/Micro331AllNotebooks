@@ -1,19 +1,20 @@
 from IPython.display import Image
 from IPython.display import display, Markdown, clear_output
-
+global prev_step 
+prev_step = 'reset'
 def reset_button_clicked(button, outt, output):
     def reset_button(b):
         with outt:
+            global prev_step 
             clear_output()
-            prev_step = ' '
+            prev_step = 'reset'
             display(Image(filename='si_wafer.JPG'))
-    
     return reset_button
 def on_butt_clicked(button, outt):
     def click_button(b):
         with outt:
-            global prev_step 
-            if(button.value == 'oxydation'):
+            global prev_step
+            if(button.value == 'oxydation' and prev_step == 'reset'):
                 print('1. Oxydation \n')
                 display(Image(filename='oxidation.JPG'))
                 prev_step = 'oxydation'
@@ -40,5 +41,6 @@ def on_butt_clicked(button, outt):
             else:
                 clear_output()
                 print('Error in your process flow, try again')
+                prev_step = 'reset'
                 display(Image(filename='si_wafer.JPG'))
     return click_button
