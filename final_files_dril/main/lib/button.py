@@ -22,11 +22,11 @@ def on_butt_clicked(button, outt):
                 print('2. Spin coating (photoresist + lift-off resist) \n')
                 display(Image(filename='spin_coating.JPG'))
                 prev_step = 'spin coating (photoresist + lift-off resist)'
-            elif(button.value == 'photolithography' and prev_step == 'spin coating (photoresist + lift-off resist)'):
-                print('3. Photolithography \n')
+            elif(button.value == 'exposure' and prev_step == 'spin coating (photoresist + lift-off resist)'):
+                print('3. Exposure \n')
                 display(Image(filename='photolitho.JPG'))     
-                prev_step = 'photolithography'
-            elif(button.value == 'development' and prev_step == 'photolithography'):
+                prev_step = 'exposure'
+            elif(button.value == 'development' and prev_step == 'exposure'):
                 print('4. Development \n')
                 display(Image(filename='development.JPG')) 
                 prev_step = 'development'
